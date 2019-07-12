@@ -10,7 +10,15 @@ repository is available [here](https://github.com/apache/incubator-mxnet.git).
 The arXiv paper is available [here](http://arxiv.org/abs/1512.02325).
 
 ### Demo results
+
+![![image (6)_detection.jpg](https://github.com/ZhouKai90/face-detection-ssd-mxnet/blob/master/test/images/image%20(6)_detection.jpg?raw=true)]()
+
+![![image (7)_detection.jpg](https://github.com/ZhouKai90/face-detection-ssd-mxnet/blob/master/test/images/image%20(7)_detection.jpg?raw=true)]()
+
+![![image (5)_detection.jpg](https://github.com/ZhouKai90/face-detection-ssd-mxnet/blob/master/test/images/image%20(5)_detection.jpg?raw=true)]()
+
 ### Try the demo
+
 ```
 # cd /path/to/face-detection-ssd-mxnet
 sh scripts/test.sh
