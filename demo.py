@@ -46,8 +46,10 @@ def parse_args():
                         help='run demo with images, use comma to seperate multiple images')
     parser.add_argument('--dir', dest='dir', nargs='?',
                         help='demo image directory, optional', type=str)
+    parser.add_argument('--output', dest='output', nargs='?',
+                        help='demo image directory output, optional', type=str)
     parser.add_argument('--ext', dest='extension', help='image extension, optional',
-                        type=str, nargs='?')
+                        type=str, default='.jpg', nargs='?')
     parser.add_argument('--epoch', dest='epoch', help='epoch of trained model',
                         default=0, type=int)
     parser.add_argument('--prefix', dest='prefix', help='trained model prefix',
@@ -106,8 +108,14 @@ if __name__ == '__main__':
     else:
         ctx = mx.gpu(args.gpu_id)
 
+    assert args.dir is not None
+    image_list = []
+    for root, dirs, files in os.walk(args.dir, topdown=False):
+        for name in files:
+            file, ext = os.path.splitext(name)
+            image_list.append(file)
     # parse image list
-    image_list = [i.strip() for i in args.images.split(',')]
+    # image_list = [i.strip() for i in args.images.split(',')]
     assert len(image_list) > 0, "No valid image specified to detect"
 
     network = None if args.deploy_net else args.network
@@ -121,5 +129,5 @@ if __name__ == '__main__':
                             (args.mean_r, args.mean_g, args.mean_b),
                             ctx, len(class_names), args.nms_thresh, args.force_nms)
     # run detection
-    detector.detect_and_visualize(image_list, args.dir, args.extension,
+    detector.detect_and_visualize(image_list, args.dir, args.output, args.extension,
                                   class_names, args.thresh, args.show_timer)

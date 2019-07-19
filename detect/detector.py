@@ -198,7 +198,7 @@ class Detector(object):
                                     fontsize=12, color='white')
         plt.show()
 
-    def detect_and_visualize(self, im_list, root_dir=None, extension=None,
+    def detect_and_visualize(self, im_list, root_dir=None, output_dir=None, extension=None,
                              classes=[], thresh=0.6, show_timer=False):
         """
         wrapper for im_detect and visualize_detection
@@ -230,5 +230,7 @@ class Detector(object):
             img = cv2.imread(name)
             # img[:, :, (0, 1, 2)] = img[:, :, (2, 1, 0)]
             # self.visualize_detection(img, det, classes, thresh)
-            output_name = os.path.join(root_dir, im_list[k] + '_detection' + extension)
+            if os.path.exists(output_dir) is False:
+                os.makedirs(output_dir)
+            output_name = os.path.join(output_dir, im_list[k] + extension)
             self.save_pic_detection(img, det, output_name, classes, thresh)
