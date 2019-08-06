@@ -15,6 +15,10 @@ The arXiv paper is available [here](http://arxiv.org/abs/1512.02325).
 ![](https://github.com/ZhouKai90/face-detection-ssd-mxnet/blob/master/test/images/image%20(7)_detection.jpg)
 ![](https://github.com/ZhouKai90/face-detection-ssd-mxnet/blob/master/test/images/image%20(5)_detection.jpg)
 
+### evaluation
+Evaluate model base on FDDB
+![](https://github.com/ZhouKai90/face-detection-ssd-mxnet/blob/master/evaluate/MAP.jpg)
+
 ### Try the demo
 
 ```
